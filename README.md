@@ -52,20 +52,20 @@ def index(request):
 ## 🎯 攻撃シナリオ
 
 攻撃者は `private_token` というカラムの存在を推測、特定したと仮定します。
-#### 1. 初期状態: 攻撃者は「田中 太郎」のトークンを一切知りません。
+1. 初期状態: 攻撃者は「田中 太郎」のトークンを一切知りません。
 
-#### 2. ブルートフォース攻撃: `__startswith` などのルックアップを利用したURLを生成します。
+2. ブルートフォース攻撃: `__startswith` などのルックアップを利用したURLを生成します。
 
-`/?name=田中 太郎&private_token__startswith=a` -> 「0件」
+   `/?name=田中 太郎&private_token__startswith=a` -> 「0件」
 
-`/?name=田中 太郎&private_token__startswith=s` -> 「1件見つかりました」
+   `/?name=田中 太郎&private_token__startswith=s` -> 「1件見つかりました」
 
-#### 3 推論: サーバーの応答（真偽値）を観察することで、トークンを一文字ずつ特定（リーク）させます。
+3. 推論: サーバーの応答（真偽値）を観察することで、トークンを一文字ずつ特定（リーク）させます。
 
-```text
-/?name=田中 太郎&private_token__startswith=a
-/?name=田中 太郎&private_token__startswith=s
-```
+   ```text
+   /?name=田中 太郎&private_token__startswith=a
+   /?name=田中 太郎&private_token__startswith=s
+   ```
 
 - `a` の場合: `0件`
 - `s` の場合: `1件`
