@@ -74,7 +74,34 @@ def index(request):
 - `a` の場合: `0件`
 - `s` の場合: `1件`
 
-上記を繰り返すことで、secret_id_1252 のような機密情報を完全に特定します。
+上記を繰り返すことで、secret_1252 のような機密情報を完全に特定します。
+
+### 画像付き解説
+   ```text
+   /?name=田中 太郎&private_token__startswith=a
+   ```
+   最初の文字はaではないと確定
+   ↓
+   b→c→dと地道に試していく
+![失敗例画像](img/4.png)
+   ```text
+   /?name=田中 太郎&private_token__startswith=s
+   ```
+   ここでsがヒット！ → 次の文字でこれをまた繰り返す
+![成功例画像](img/1.png)
+   ```text
+   /?name=田中 太郎&private_token__startswith=secret_1251
+   ```
+   1251でだめなら1252で、、、
+![失敗例画像](img/3.png)
+   ```text
+   /?name=田中 太郎&private_token__startswith=secret_1252
+   ```
+   1252でヒット！次の文字で全通り試してヒットしなかったらこれで特定完了だろうと推測
+![成功例画像](img/2.png)</br>
+   実際にデータベースを見てみると、、、</br>
+   カラム名`private_token`で田中太郎の private_tokeはsecret_1252 だ！</br>
+![DB Browser for SQLite](img/database.png)
 
 ---
 
