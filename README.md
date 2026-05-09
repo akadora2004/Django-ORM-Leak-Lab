@@ -100,7 +100,7 @@ def index(request):
    1252でヒット！次の文字で全通り試してヒットしなかったらこれで特定完了だろうと推測
 ![成功例画像](img/2.png)</br>
    実際にデータベースを見てみると、、、</br>
-   カラム名`private_token`で田中太郎の private_tokeはsecret_1252 だ！</br>
+   カラム名`private_token`で田中太郎の private_tokeはsecret_1252 であってる！</br>
 ![DB Browser for SQLite](img/database.png)
 
 ---
