@@ -28,8 +28,12 @@ docker compose up -d --build
 
 ```bash
 docker compose exec django python manage.py migrate
-docker compose exec django python manage.py shell < main/seed.py
+docker compose exec -T django python manage.py shell < src/main/seed.py
 ```
+
+サイトにアクセス</br>
+http://localhost:8080
+
 
 ---
 
