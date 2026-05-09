@@ -8,20 +8,20 @@
     <body>
         <h1>ORMベースの情報漏えい</h1>
 
-        <h1>脆弱会社 社員紹介サイト</h1>
-        <a href="{% url 'index' %}">リセット</a>
+        <h1>非脆弱会社 社員紹介サイト</h1>
+        <a href="{% url 'safe' %}">リセット</a>
         <form method="GET" action="">
             <input type="text" name="name" placeholder="社員名で検索">
             <button type="submit">検索</button>
         </form>
-        <a href="{% url 'safe' %}">ORM インジェクション対策した安全なサイトへ</a>
+        <a href="{% url 'index' %}">脆弱サイトへ戻る</a>
 
         <hr>
 
-        {% if results %}
-            <p style="color: green;"><strong>{{ results.count }}人の社員</strong></p>
+        {% if results2 %}
+            <p style="color: green;"><strong>{{ results2.count }}人の社員</strong></p>
             <ul>
-                {% for emp in results %}
+                {% for emp in results2 %}
                     <li>{{ emp.name }}（{{ emp.department }}）</li>
                 {% endfor %}
             </ul>
