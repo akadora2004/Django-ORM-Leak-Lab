@@ -98,11 +98,15 @@ def index(request):
    /?name=田中 太郎&private_token__startswith=secret_1252
    ```
    1252でヒット！次の文字で全通り試してヒットしなかったらこれで特定完了だろうと推測
-![成功例画像](img/2.png)</br>
-   実際にデータベースを見てみると、、、</br>
-   カラム名`private_token`で田中太郎の private_tokeはsecret_1252 であってる！</br>
+![成功例画像](img/2.png)
+   実際にデータベースを見てみると、、、
+   カラム名`private_token`で田中太郎の private_tokeはsecret_1252 であってる！
 ![DB Browser for SQLite](img/database.png)
-
+   もちろん田中 太郎に絞らなくても`private_token`がsecret_2で始まる人を探すこともできますよ
+   ```text
+   /?private_token__startswith=secret_2
+   ```
+![成功例画像](img/5.png)
 ---
 
 ## 🛡️ 対策
