@@ -102,7 +102,7 @@ def index(request):
    実際にデータベースを見てみると、、、
    カラム名`private_token`で田中太郎の private_tokeはsecret_1252 であってる！
 ![DB Browser for SQLite](img/database.png)</br>
-   もちろん田中 太郎に絞らなくても`private_token`がsecret_2で始まる人を探すこともできますよ
+   もちろん田中 太郎に絞らなくても`private_token`がsecret_2で始まる人を探すこともできます
    ```text
    /?private_token__startswith=secret_2
    ```
