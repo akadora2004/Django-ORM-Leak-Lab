@@ -82,25 +82,25 @@ def index(request):
    ```
    最初の文字はaではないと確定
    ↓
-   b→c→dと地道に試していく
+   b→c→dと地道に試していく</br>
 ![失敗例画像](img/4.png)
    ```text
    /?name=田中 太郎&private_token__startswith=s
    ```
-   ここでsがヒット！ → 次の文字でこれをまた繰り返す
+   ここでsがヒット！ → 次の文字でこれをまた繰り返す</br>
 ![成功例画像](img/1.png)
    ```text
    /?name=田中 太郎&private_token__startswith=secret_1251
    ```
-   1251でだめなら1252で、、、
+   1251でだめなら1252で、、、</br>
 ![失敗例画像](img/3.png)
    ```text
    /?name=田中 太郎&private_token__startswith=secret_1252
    ```
-   1252でヒット！次の文字で全通り試してヒットしなかったらこれで特定完了だろうと推測
+   1252でヒット！次の文字で全通り試してヒットしなかったらこれで特定完了だろうと推測</br>
 ![成功例画像](img/2.png)</br>
-   実際にデータベースを見てみると、、、
-   カラム名`private_token`で田中太郎の private_tokeはsecret_1252 であってる！
+   実際にデータベースを見てみると、、、</br>
+   カラム名`private_token`で田中太郎の private_tokeはsecret_1252 であってる！</br>
 ![DB Browser for SQLite](img/database.png)</br>
    もちろん田中 太郎に絞らなくても`private_token`がsecret_2で始まる人を探すこともできます
    ```text
