@@ -115,13 +115,9 @@ def index(request):
 
 ```python
 name = request.GET.get('name')
-department = request.GET.get('department')
 
 results = Employee.objects.all()
-if name:
-    results = results.filter(name=name)
-if department:
-    results = results.filter(department=department)
+results = results.filter(name=name)
 ```
 
 `private_token` なんてコードに書いていない以上、外部から何を送り込まれても絶対に漏洩しません。
